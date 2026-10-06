@@ -1,19 +1,11 @@
-#include<iostream>
-#include<string>
-using namespace std;
+#include "Book.h"
+#include <utility>
 
-class Book {
-    public :
-        string title; 
-        Book(string title){
-            this->title = title;
-        }
-        string getBookTitle(){
-            return title;
-        }
+Book::Book(std::string title) : title(std::move(title)) {}
+std::string Book::getBookTitle() const {
+    return title;
+}
 
-        void changeBookTitle(){
-            this->title = title;
-        }
-
-};
+void Book::changeBookTitle(std::string newTitle) {
+    title = std::move(newTitle);
+}

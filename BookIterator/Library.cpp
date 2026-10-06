@@ -1,17 +1,13 @@
-#include<iostream>
-#include<vector>
+#include "Library.h"
 
-class Library{
-    private:
-    
-    vector<Book> books ;
-    public:
-    void addBook(Book book){
-        books.push_back(book);
-    }
+#include "BookIterator.h"
 
-    std::unique_ptr<Iterator> createIterator() {
-    return std::make_unique<BookIterator>(books);
+#include <utility>
+
+void Library::addBook(Book book) {
+    books.push_back(std::move(book));
 }
 
-};
+std::unique_ptr<Iterator> Library::createIterator() {
+    return std::make_unique<BookIterator>(books);
+}

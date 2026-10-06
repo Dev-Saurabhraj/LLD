@@ -1,19 +1,11 @@
-#include<iostream>
-#include "Iterator.h"
-#include<vector>
-class BookIterator : public Iterator {
-    private:
-    vector<Book>& books;
-    int index;
+#include "BookIterator.h"
 
-    public:
+BookIterator::BookIterator(std::vector<Book>& books) : books(books) {}
 
-    BookIterator(vector<Book>& books) : books(books), index(0){};
+bool BookIterator::hasNext() {
+    return index < books.size();
+}
 
-    bool hasNext() override {
-        return index < books.size();
-    };
-    Book next() override {
-        return books[index++];
-    }
-};
+Book BookIterator::next() {
+    return books[index++];
+}

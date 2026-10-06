@@ -1,8 +1,8 @@
-#include<bits/stdc++.h>
-#include 'Library.cpp'
-using namespace std;
-int main() {
+#include "Library.h"
 
+#include <iostream>
+
+int main() {
     Library library;
 
     library.addBook(Book("Clean Code"));
@@ -11,12 +11,8 @@ int main() {
     library.addBook(Book("System Design"));
 
     auto iterator = library.createIterator();
-
     while (iterator->hasNext()) {
-
-        Book book = iterator->next();
-
-        cout << book.getTitle() << endl;
+        std::cout << iterator->next().getBookTitle() << '\n';
     }
 
     return 0;
